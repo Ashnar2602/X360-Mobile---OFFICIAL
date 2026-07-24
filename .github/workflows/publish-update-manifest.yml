@@ -1,0 +1,110 @@
+name: Publish update manifest
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: x360-mobile-update-manifest
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out public distribution repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Validate release APK and metadata
+        shell: bash
+        run: |
+          set -euo pipefail
+          mapfile -t apk_assets < <(
+            jq -r '.release.assets[] | select(.name | endswith(".apk")) |
+              [.name, .browser_download_url] | @tsv' "$GITHUB_EVENT_PATH"
+          )
+          if [[ "${#apk_assets[@]}" -ne 1 ]]; then
+            echo "A release must contain exactly one APK asset." >&2
+            exit 1
+          fi
+          IFS=$'\t' read -r apk_name apk_url <<<"${apk_assets[0]}"
+          if [[ ! "$apk_name" =~ ^x360-mobile-[0-9A-Za-z.-]+\.apk$ ]]; then
+            echo "Unexpected APK asset name: $apk_name" >&2
+            exit 1
+          fi
+          curl --fail --location --retry 3 --output "$apk_name" "$apk_url"
+
+          aapt_path="$(
+            find "$ANDROID_HOME/build-tools" -type f -name aapt -print |
+              sort -V | tail -n 1
+          )"
+          if [[ -z "$aapt_path" ]]; then
+            echo "aapt was not found on the GitHub runner." >&2
+            exit 1
+          fi
+          package_line="$("$aapt_path" dump badging "$apk_name" | head -n 1)"
+          package_name="$(sed -n "s/.*name='\\([^']*\\)'.*/\\1/p" <<<"$package_line")"
+          version_code="$(sed -n "s/.*versionCode='\\([^']*\\)'.*/\\1/p" <<<"$package_line")"
+          version_name="$(sed -n "s/.*versionName='\\([^']*\\)'.*/\\1/p" <<<"$package_line")"
+          if [[ "$package_name" != "emu.x360mobile.com" ]]; then
+            echo "Unexpected application ID: $package_name" >&2
+            exit 1
+          fi
+          if [[ ! "$version_code" =~ ^[1-9][0-9]*$ ]]; then
+            echo "Invalid Android versionCode: $version_code" >&2
+            exit 1
+          fi
+          if [[ "$version_name" != "${{ github.event.release.tag_name }}" &&
+                "v$version_name" != "${{ github.event.release.tag_name }}" ]]; then
+            echo "Tag and APK versionName do not match." >&2
+            exit 1
+          fi
+
+          prerelease="${{ github.event.release.prerelease }}"
+          if [[ "$version_name" =~ -preview\.[0-9]+$ ]]; then
+            channel=preview
+            expected_prerelease=true
+          elif [[ "$version_name" =~ -rc\.[0-9]+$ ]]; then
+            channel=rc
+            expected_prerelease=true
+          elif [[ "$version_name" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            channel=public
+            expected_prerelease=false
+          else
+            echo "Version does not follow the X360 Mobile release convention." >&2
+            exit 1
+          fi
+          if [[ "$prerelease" != "$expected_prerelease" ]]; then
+            echo "GitHub prerelease flag does not match version channel $channel." >&2
+            exit 1
+          fi
+
+          jq -r '.release.body // ""' "$GITHUB_EVENT_PATH" > release-notes.md
+          python tools/generate_update_manifest.py \
+            --apk "$apk_name" \
+            --version "$version_name" \
+            --version-code "$version_code" \
+            --download-url "$apk_url" \
+            --page-url "${{ github.event.release.html_url }}" \
+            --notes-file release-notes.md \
+            --output update-manifest.json
+          rm -f "$apk_name" release-notes.md
+
+      - name: Publish manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- update-manifest.json; then
+            echo "Manifest is already current."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add update-manifest.json
+          git commit -m "Publish ${{ github.event.release.tag_name }} update metadata"
+          git push origin HEAD:main
