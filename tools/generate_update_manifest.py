@@ -86,6 +86,21 @@ def main() -> None:
         manifest = json.loads(args.output.read_text(encoding="utf-8"))
         if manifest.get("schema") != 1 or not isinstance(manifest.get("releases"), list):
             raise SystemExit("Existing manifest has an unsupported schema")
+    existing_versions = [
+        item for item in manifest["releases"]
+        if item.get("version") != release["version"]
+    ]
+    if existing_versions:
+        latest = max(existing_versions, key=lambda item: version_key(item["version"]))
+        if version_key(release["version"]) <= version_key(latest["version"]):
+            raise SystemExit(
+                f"Version {release['version']} is not newer than {latest['version']}"
+            )
+        highest_version_code = max(int(item.get("versionCode", 0)) for item in existing_versions)
+        if args.version_code <= highest_version_code:
+            raise SystemExit(
+                f"versionCode {args.version_code} is not greater than {highest_version_code}"
+            )
     candidates = [
         item for item in manifest["releases"]
         if item.get("version") != release["version"]
