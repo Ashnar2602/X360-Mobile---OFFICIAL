@@ -3,6 +3,12 @@ name: Publish update manifest
 on:
   release:
     types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing GitHub release tag to publish into the update manifest
+        required: true
+        type: string
 
 permissions:
   contents: write
@@ -20,13 +26,33 @@ jobs:
         with:
           ref: main
 
+      - name: Resolve release metadata
+        id: release
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          MANUAL_TAG: ${{ inputs.tag }}
+        run: |
+          set -euo pipefail
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            gh api "repos/$GITHUB_REPOSITORY/releases/tags/$MANUAL_TAG" > release.json
+          else
+            jq '.release' "$GITHUB_EVENT_PATH" > release.json
+          fi
+          release_tag="$(jq -r '.tag_name // empty' release.json)"
+          if [[ -z "$release_tag" ]]; then
+            echo "Release metadata does not contain a tag." >&2
+            exit 1
+          fi
+          echo "tag=$release_tag" >> "$GITHUB_OUTPUT"
+
       - name: Validate release APK and metadata
         shell: bash
         run: |
           set -euo pipefail
           mapfile -t apk_assets < <(
-            jq -r '.release.assets[] | select(.name | endswith(".apk")) |
-              [.name, .browser_download_url] | @tsv' "$GITHUB_EVENT_PATH"
+            jq -r '.assets[] | select(.name | endswith(".apk")) |
+              [.name, .browser_download_url] | @tsv' release.json
           )
           if [[ "${#apk_assets[@]}" -ne 1 ]]; then
             echo "A release must contain exactly one APK asset." >&2
@@ -62,13 +88,13 @@ jobs:
             echo "Invalid Android versionCode: $version_code" >&2
             exit 1
           fi
-          if [[ "$version_name" != "${{ github.event.release.tag_name }}" &&
-                "v$version_name" != "${{ github.event.release.tag_name }}" ]]; then
+          if [[ "$version_name" != "${{ steps.release.outputs.tag }}" &&
+                "v$version_name" != "${{ steps.release.outputs.tag }}" ]]; then
             echo "Tag and APK versionName do not match." >&2
             exit 1
           fi
 
-          prerelease="${{ github.event.release.prerelease }}"
+          prerelease="$(jq -r '.prerelease' release.json)"
           if [[ "$version_name" =~ -preview\.[0-9]+$ ]]; then
             channel=preview
             expected_prerelease=true
@@ -87,16 +113,16 @@ jobs:
             exit 1
           fi
 
-          jq -r '.release.body // ""' "$GITHUB_EVENT_PATH" > release-notes.md
+          jq -r '.body // ""' release.json > release-notes.md
           python tools/generate_update_manifest.py \
             --apk "$apk_name" \
             --version "$version_name" \
             --version-code "$version_code" \
             --download-url "$apk_url" \
-            --page-url "${{ github.event.release.html_url }}" \
+            --page-url "$(jq -r '.html_url' release.json)" \
             --notes-file release-notes.md \
             --output update-manifest.json
-          rm -f "$apk_name" release-notes.md
+          rm -f "$apk_name" release-notes.md release.json
 
       - name: Publish manifest
         shell: bash
@@ -109,5 +135,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add update-manifest.json
-          git commit -m "Publish ${{ github.event.release.tag_name }} update metadata"
+          git commit -m "Publish ${{ steps.release.outputs.tag }} update metadata"
           git push origin HEAD:main
