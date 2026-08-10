@@ -48,7 +48,10 @@ jobs:
             exit 1
           fi
           package_line="$("$aapt_path" dump badging "$apk_name" | head -n 1)"
-          package_name="$(sed -n "s/.*name='\\([^']*\\)'.*/\\1/p" <<<"$package_line")"
+          # The package line also contains compileSdkVersionCodename='...'.
+          # Anchor this match to the leading package field so a later name=
+          # attribute can never be mistaken for the Android application ID.
+          package_name="$(sed -n "s/^package: name='\\([^']*\\)'.*/\\1/p" <<<"$package_line")"
           version_code="$(sed -n "s/.*versionCode='\\([^']*\\)'.*/\\1/p" <<<"$package_line")"
           version_name="$(sed -n "s/.*versionName='\\([^']*\\)'.*/\\1/p" <<<"$package_line")"
           if [[ "$package_name" != "emu.x360mobile.com" ]]; then
