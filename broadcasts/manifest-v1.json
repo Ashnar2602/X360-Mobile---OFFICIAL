@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "revision": 1,
+  "catalogUrl": "https://raw.githubusercontent.com/Ashnar2602/X360-Mobile---OFFICIAL/main/broadcasts/catalogs/catalog-r000001.json",
+  "catalogSha256": "a56ef08eb66a2e742f532ac403b3b78abfd020016decc9c1aecffdcbf853b57c",
+  "catalogSize": 570,
+  "keyId": "x360-broadcast-p256-2026-01",
+  "signature": "MEQCIGPQnko0Zf9xP5rV2BVi0mcyJ6C2elL9alkiLwDydOPNAiB1aAPvqWbDRnToG3HWqr1MepY++JVhsuqvWJNNG0VDKA=="
+}
