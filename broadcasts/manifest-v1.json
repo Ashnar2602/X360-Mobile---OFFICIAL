@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "revision": 1,
-  "catalogUrl": "https://raw.githubusercontent.com/Ashnar2602/X360-Mobile---OFFICIAL/main/broadcasts/catalogs/catalog-r000001.json",
-  "catalogSha256": "a56ef08eb66a2e742f532ac403b3b78abfd020016decc9c1aecffdcbf853b57c",
-  "catalogSize": 570,
+  "revision": 2,
+  "catalogUrl": "https://raw.githubusercontent.com/Ashnar2602/X360-Mobile---OFFICIAL/main/broadcasts/catalogs/catalog-r000002.json",
+  "catalogSha256": "e389e25a38e990708f7ba5938b3b38d69162551d4434c25d741ba9dcff4272ec",
+  "catalogSize": 1239,
   "keyId": "x360-broadcast-p256-2026-01",
-  "signature": "MEQCIGPQnko0Zf9xP5rV2BVi0mcyJ6C2elL9alkiLwDydOPNAiB1aAPvqWbDRnToG3HWqr1MepY++JVhsuqvWJNNG0VDKA=="
+  "signature": "MEUCIDje/+98/mTqo0RVPgH+lJWfYVEj+ZzWNVSQCmgGKz4nAiEAgo9UELsODyfVlEIwFJqcBnp+cHQGC5z9wouQUqgtJYg="
 }
