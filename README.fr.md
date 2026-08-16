@@ -1,116 +1,109 @@
-# X360 Mobile - Émulateur Xbox 360 pour Android
+# X360 Mobile — Émulateur Xbox 360 pour Android
+
+<p align="center"><img src="https://x360mobile.com/logo.png" alt="Logo X360 Mobile" width="180"/></p>
+<p align="center"><b>Émulation expérimentale Xbox 360 ARM64 pour Android avec moteur de rendu Vulkan.</b></p>
+<p align="center"><a href="https://www.x360mobile.com"><b>Site officiel : www.x360mobile.com</b></a></p>
 
 <p align="center">
-  <img src="https://x360mobile.com/logo.png" alt="Logo X360 Mobile" width="180" style="border-radius: 20%;"/>
-</p>
-
-<p align="center">
-  <b>Un émulateur Xbox 360 natif et expérimental pour Android, basé nativement sur Xenia Canary.</b>
-</p>
-
-<p align="center">
-  <a href="https://www.x360mobile.com"><b>Site Officiel : www.x360mobile.com</b></a>
-</p>
-
-<p align="center">
-  Choose Language / Scegli la lingua / Sprache wählen / Choisir la langue / Seleccionar idioma:
-  <br>
-  <a href="README.md">English</a> |
-  <a href="README.it.md">Italiano</a> |
-  <a href="README.de.md">Deutsch</a> |
-  <b>Français</b> |
+  <a href="README.md">English</a> · <a href="README.it.md">Italiano</a> ·
+  <a href="README.de.md">Deutsch</a> · <b>Français</b> ·
   <a href="README.es.md">Español</a>
 </p>
 
----
+> [!IMPORTANT]
+> Ceci est le dépôt public de distribution. Il contient les APK officielles
+> signées, les notes de version, les métadonnées de mise à jour et la
+> documentation publique. Le code source actif de l'émulateur est maintenu
+> séparément et n'est pas publié ici.
 
-Bienvenue sur le dépôt officiel de **X360 Mobile**, un émulateur Xbox 360 natif et expérimental conçu spécifiquement pour la plateforme Android. Développé à l'aide des technologies modernes ARM64 et Vulkan 1.3, X360 Mobile est le **pionnier de l'intégration native du célèbre cœur de développement Xenia Canary sur Android**, apportant des optimisations avancées et des performances haut de gamme directement sur vos appareils mobiles.
+## À propos du projet
 
-> [!NOTE]
-> **Objectif du dépôt :** 
-> Afin de protéger le code source et de préserver nos optimisations propriétaires de performances, **X360 Mobile est closed-source (code source fermé)**. Ce dépôt officiel ne contient pas le code source de l'émulateur. Il sert à la fois d'**archive officielle des versions et de plateforme de distribution principale** pour la publication des fichiers APK, la gestion des rapports de bug (Issues) et le partage des guides d'utilisation.
+X360 Mobile est un port Android expérimental dont le cœur ARM64 actuel combine
+des composants et comportements issus des lignes de développement Xenia EDGE
+et Xenia Canary, ainsi que des travaux propres à Android sur l'exécution, le
+rendu, les entrées, le stockage et l'interface. Il n'est affilié ni à
+Microsoft, ni à Xbox, ni au projet Xenia.
 
----
+La compatibilité et les performances varient fortement selon le jeu,
+l'appareil, le pilote GPU et la configuration. Le démarrage d'un titre ne
+signifie pas qu'il est entièrement jouable.
 
-## Caractéristiques Principales
+## Fonctionnalités principales
 
-* **Fondation Native Xenia Canary :** Le tout premier émulateur Android conçu nativement autour de Xenia Canary dès sa conception, plutôt que de migrer ultérieurement depuis Xenia Master, garantissant une architecture et des performances supérieures.
-* **Backend Vulkan Moderne :** Exploite les API Vulkan 1.3 pour offrir une utilisation optimale du matériel, des taux de rafraîchissement élevés (FPS) et une charge système minimale.
-* **Superpositions Tactiles Personnalisées :** Manettes virtuelles entièrement personnalisables avec retour haptique, réponse analogique fluide et dispositions adaptées à toutes les tailles d'écran.
-* **Prise en Charge des Manettes Physiques :** Compatibilité plug-and-play immédiate pour les manettes externes via Bluetooth ou USB-OTG (y compris les manettes Xbox Series X|S, DualSense, DualShock 4 et les principales manettes mobiles du marché).
-* **Profils Spécifiques par Jeu :** Ajustez individuellement par jeu les résolutions, les options de compilation des shaders et les limites de mémoire pour tirer le meilleur de votre appareil.
-* **Optimisations Mobiles :** Traduction dynamique intégrée du code d'assemblage PowerPC en instructions natives ARM64 avec des micro-optimisations spécifiques pour les processeurs Snapdragon et Dimensity.
+- Cœur Android ARM64 et backend graphique Vulkan.
+- Bibliothèque et interface en jeu pensées pour la manette, avec contrôle tactile.
+- Manettes physiques, commandes tactiles configurables et vibrations.
+- Réglages par jeu, cVars personnalisées et profils recommandés.
+- GamerTags, profils, sauvegardes, contenus installés, Title Updates et DLC.
+- Détection ISO/XISO, XEX, dossiers extraits avec `default.xex`, ZAR et
+  structures XBLA prises en charge.
+- Métadonnées par Title ID, cache permanent des jaquettes et compatibilité.
+- Lancement depuis des frontends externes et Android Document Provider.
+- Mises à jour signées avec canaux publics, préversions et maintenance.
 
----
+## Configuration requise
 
-## Configuration Système Requise
+| Composant | Exigence |
+|---|---|
+| Système | Android 11 / API 30 ou version ultérieure |
+| CPU / ABI | Appareil ARM 64 bits (`arm64-v8a`) |
+| Graphismes | GPU Vulkan avec pilote Vulkan fonctionnel |
+| Mémoire | 8 Go de RAM ou plus recommandés pour les jeux exigeants |
+| Performances | Un SoC mobile haut de gamme récent est fortement recommandé |
 
-L'émulation de la Xbox 360 est expérimentale et extrêmement lourde sur le plan informatique, nécessitant une traduction matérielle complexe en temps réel. Veuillez consulter le tableau ci-dessous pour évaluer les performances attendues sur votre appareil.
+Les appareils Adreno sont les plus largement testés. Mali et Xclipse sont pris
+en charge par le backend Android, mais la compatibilité des jeux et pilotes peut
+différer. Les pilotes Vulkan personnalisés sont facultatifs et réservés aux
+appareils compatibles ; ils peuvent améliorer un jeu et en dégrader ou bloquer
+un autre.
 
-| Spécification | Configuration Minimale | Recommandée (Pour des vitesses fluides) |
-| :--- | :--- | :--- |
-| **Système d'Exploitation** | Android 11 (64 bits) | Android 13 ou plus récent (64 bits) |
-| **Processeur & GPU** | Qualcomm Snapdragon avec GPU Adreno (séries 600/700/800) | Qualcomm Snapdragon haut de gamme (recommandé Snapdragon 8 Gen 1 ou plus récent) |
-| **RAM (Mémoire)** | 6 Go de RAM | 8 Go - 12 Go de RAM (ou plus) |
-| **Stockage (Vitesse)** | Stockage haute vitesse (recommandé UFS 3.1 ou supérieur) | Stockage ultra-rapide UFS 3.1/4.0 |
+## Installation et mises à jour
 
-> [!WARNING]
-> Les appareils équipés de processeurs dotés de GPU Mali, de GPU Xclipse de Samsung (basés sur AMD RDNA), de GPU Adreno obsolètes (antérieurs à la série 600) ou de puces d'entrée de gamme subiront de graves limites de performances, des bugs visuels, une forte surchauffe (thermal throttling) ou des crashs. Un processeur Qualcomm Snapdragon moderne avec GPU Adreno est fortement recommandé pour un résultat optimal.
+1. Téléchargez la dernière APK publique depuis [GitHub Releases](https://github.com/Ashnar2602/X360-Mobile---OFFICIAL/releases).
+2. Vérifiez que le fichier se nomme `x360-mobile-{version}.apk` et provient de
+   ce dépôt.
+3. Autorisez l'installation depuis cette source lorsque Android le demande.
+4. Terminez l'assistant initial et choisissez un dossier contenant vos propres
+   jeux acquis et extraits légalement.
 
----
+L'application consulte `update-manifest.json` dans ce dépôt et télécharge
+directement les APK admissibles. Avant installation, elle vérifie le package,
+la version, la taille, le SHA-256 et l'identité de signature. Les versions
+Public sont proposées par défaut ; Alpha, Preview et Release Candidate exigent
+l'activation des préversions. Hotfix, Revision et Repack désignent les paquets
+de maintenance.
 
-## Guide de Démarrage Rapide
+Les responsables des publications doivent suivre [VERSIONING.md](VERSIONING.md).
+Une version GitHub n'apparaît dans l'outil de mise à jour qu'après la réussite
+du workflow du manifeste.
 
-1. **Téléchargez l'APK :** Rendez-vous dans notre section [Releases](https://github.com/Ashnar2602/X360-Mobile---OFFICIAL/releases) et téléchargez le dernier fichier `.apk` stable.
-2. **Autorisez les Sources Inconnues :** Si vous y êtes invité, autorisez votre navigateur ou votre gestionnaire de fichiers à installer des applications provenant de sources inconnues dans les paramètres de sécurité d'Android.
-3. **Installez et Lancez :** Installez le fichier APK téléchargé et lancez **X360 Mobile**.
-4. **Configurez les Dossiers :** Créez un dossier dédié sur le stockage interne ou externe de votre appareil (par exemple, `/Emulation/Xbox360/Games`) et placez-y vos fichiers de jeux légalement obtenus.
-5. **Formats de Jeux :** L'émulateur prend officiellement en charge les formats `.iso`, `.xex` et les dossiers décompressés (unpacked).
-6. **Chargez et Jouez :** Indiquez à l'émulateur le chemin de votre dossier de jeux, sélectionnez un titre et lancez la partie !
+## Sources de jeux prises en charge
 
----
+La bibliothèque détecte `.iso`/`.xiso`, `.xex`, `.zar`, les jeux extraits avec
+un `default.xex` lisible et les structures XBLA prises en charge. La détection
+d'un conteneur ne garantit pas la compatibilité de chaque jeu. Les ISO allégées
+sont recommandées lorsqu'elles proviennent d'une copie légalement détenue.
 
-## Foire Aux Questions (FAQ)
+## Compatibilité et signalements
 
-### X360 Mobile est-il gratuit ?
-**Oui.** X360 Mobile est gratuit à télécharger et à utiliser. Nous ne facturons aucun frais et n'intégrons aucune publicité intrusive qui gâcherait l'expérience de jeu.
+Consultez le [site de compatibilité](https://www.x360mobile.com) pour les
+résultats actuels. Les pourcentages fixes d'anciennes annonces ne sont pas
+fiables : les résultats évoluent avec l'application, les pilotes et le matériel.
 
-### Pourquoi le projet est-il closed-source ?
-Nous avons fait le choix de garder X360 Mobile fermé afin d'éviter les forks frauduleux, les versions modifiées malveillantes (ex. injection de logiciels publicitaires ou espions dans nos builds), et de protéger notre pipeline exclusif de conversion ARM64 ainsi que les optimisations de notre compilateur. Nous voulons nous assurer que nos utilisateurs reçoivent uniquement des paquets sécurisés, hautement optimisés et signés officiellement directement depuis ce dépôt ou notre site officiel.
+Avant d'ouvrir un [ticket](https://github.com/Ashnar2602/X360-Mobile---OFFICIAL/issues),
+recherchez les rapports existants et indiquez la version de l'app, le jeu et son
+Title ID, l'appareil, le SoC/GPU, Android, le pilote Vulkan, le format et les
+étapes de reproduction. Ne publiez jamais de jeux, clés ou contenus protégés de
+la console.
 
-### X360 Mobile est-il lié au projet de bureau Xenia ?
-X360 Mobile est basé sur l'incroyable code source de **Xenia Canary** (un projet open-source pour PC). Nous avons porté, réécrit et optimisé les moteurs de rendu et d'exécution d'origine pour les faire fonctionner sous Android. Nous respectons profondément les développeurs originaux de Xenia et visons à offrir le même niveau d'excellence sur les appareils mobiles.
+## Mentions légales
 
-### Quels jeux puis-je faire tourner actuellement ?
-La compatibilité s'améliore constamment. Actuellement, **plus de 300 titres ont été testés**, dont environ **40 % sont entièrement jouables**.
+- Xbox 360 et Xbox sont des marques de Microsoft Corporation.
+- X360 Mobile n'est ni affilié, ni autorisé, ni sponsorisé, ni approuvé par
+  Microsoft, Xbox ou le projet Xenia.
+- L'application ne fournit aucun jeu, logiciel système de console ou contenu
+  protégé. Les utilisateurs doivent fournir leurs propres copies légales.
+- L'émulation est expérimentale ; l'utilisation du logiciel et de pilotes
+  personnalisés se fait à vos risques.
 
-Pour consulter une liste complète et à jour de compatibilité, veuillez visiter notre site officiel à l'adresse [www.x360mobile.com](https://www.x360mobile.com). Bien que les classiques Arcade, les jeux indépendants et les jeux 3D légers fonctionnent très bien, les jeux AAA plus gourmands (comme *Red Dead Redemption*, *Halo 3* ou *Gears of War*) sont bootables et peuvent atteindre des vitesses jouables sur les derniers processeurs phares Snapdragon, même s'ils peuvent encore présenter de légers bugs visuels ou de légères baisses de FPS.
-
----
-
-## Signaler un Bug
-
-Si vous rencontrez des plantages, des bugs graphiques ou des problèmes de compatibilité :
-1. Rendez-vous dans la section [Issues](https://github.com/Ashnar2602/X360-Mobile---OFFICIAL/issues).
-2. Vérifiez si le problème a déjà été signalé par un autre utilisateur.
-3. Si ce n'est pas le cas, ouvrez un nouveau ticket en utilisant notre modèle et incluez :
-   * Le modèle de votre appareil et son processeur (ex. Samsung Galaxy S23, Snapdragon 8 Gen 2).
-   * La version exacte d'Android et la quantité de RAM.
-   * Le titre du jeu et son format (.iso ou .xex).
-   * Une description détaillée du bug et, si possible, des captures d'écran ou des vidéos.
-
----
-
-## Mentions Légales et Exclusions de Responsabilité
-
-* **Xbox 360** est une marque déposée de Microsoft Corporation. **X360 Mobile** n'est en aucun cas affilié, autorisé, sponsorisé ou approuvé par Microsoft Corporation, ses filiales ou ses partenaires.
-* Tous les titres de jeux, images et logos de marques sont des marques commerciales de leurs propriétaires respectifs.
-* **X360 Mobile** n'inclut aucun fichier de jeu, logiciel système (dashboard) ou ROM sous droit d'auteur. Les utilisateurs sont légalement tenus de posséder des copies physiques de leurs jeux et d'effectuer eux-mêmes les sauvegardes pour leur usage personnel et non commercial.
-* En téléchargeant et en utilisant ce logiciel, vous acceptez nos conditions d'utilisation et reconnaissez que l'émulation est une technologie expérimentale utilisée à vos propres risques.
-
----
-
-<p align="center">
-  © 2026 X360 Mobile Team. Tous droits réservés. <br>
-  Pour les actualités, mises à jour et plus encore, visitez le site <a href="https://www.x360mobile.com">www.x360mobile.com</a>.
-</p>
+<p align="center">© 2026 X360 Mobile Team · <a href="https://www.x360mobile.com">www.x360mobile.com</a></p>
