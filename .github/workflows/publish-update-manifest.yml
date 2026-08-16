@@ -26,6 +26,10 @@ jobs:
         with:
           ref: main
 
+      - name: Test update versioning and manifest tools
+        shell: bash
+        run: python -m unittest discover -s tools/tests -p 'test_*.py'
+
       - name: Resolve release metadata
         id: release
         shell: bash
@@ -94,20 +98,12 @@ jobs:
             exit 1
           fi
 
+          version_meta="$(
+            python tools/x360_versioning.py describe "$version_name" "$version_code"
+          )"
+          channel="$(jq -r '.channel' <<<"$version_meta")"
+          expected_prerelease="$(jq -r '.prerelease' <<<"$version_meta")"
           prerelease="$(jq -r '.prerelease' release.json)"
-          if [[ "$version_name" =~ -preview\.[0-9]+$ ]]; then
-            channel=preview
-            expected_prerelease=true
-          elif [[ "$version_name" =~ -rc\.[0-9]+$ ]]; then
-            channel=rc
-            expected_prerelease=true
-          elif [[ "$version_name" =~ ^[0-9]+\.[0-9]+\.[0-9]+(-public\.[1-9][0-9]*)?$ ]]; then
-            channel=public
-            expected_prerelease=false
-          else
-            echo "Version does not follow the X360 Mobile release convention." >&2
-            exit 1
-          fi
           if [[ "$prerelease" != "$expected_prerelease" ]]; then
             echo "GitHub prerelease flag does not match version channel $channel." >&2
             exit 1

@@ -61,6 +61,9 @@ Xbox 360 emulation is an experimental and computationally intense process requir
 
 ## Quick Start Guide
 
+Release maintainers must follow the canonical naming, updater-policy and
+legacy-bridge rules in [VERSIONING.md](VERSIONING.md).
+
 1. **Download the APK:** Head over to our [Releases](https://github.com/Ashnar2602/X360-Mobile---OFFICIAL/releases) section and download the latest stable `.apk` package.
 2. **Enable Unknown Sources:** If prompted, allow your web browser or file manager to install applications from unknown sources in your Android security settings.
 3. **Install and Launch:** Install the downloaded APK file and launch **X360 Mobile**.
