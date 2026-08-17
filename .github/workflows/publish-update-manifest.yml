@@ -50,7 +50,7 @@ jobs:
           fi
           echo "tag=$release_tag" >> "$GITHUB_OUTPUT"
 
-      - name: Validate release APK and metadata
+      - name: Validate combined release APKs and metadata
         shell: bash
         run: |
           set -euo pipefail
@@ -58,16 +58,25 @@ jobs:
             jq -r '.assets[] | select(.name | endswith(".apk")) |
               [.name, .browser_download_url] | @tsv' release.json
           )
-          if [[ "${#apk_assets[@]}" -ne 1 ]]; then
-            echo "A release must contain exactly one APK asset." >&2
+          if [[ "${#apk_assets[@]}" -ne 2 ]]; then
+            echo "A combined release must contain exactly two APK assets." >&2
             exit 1
           fi
-          IFS=$'\t' read -r apk_name apk_url <<<"${apk_assets[0]}"
-          if [[ ! "$apk_name" =~ ^x360-mobile-[0-9A-Za-z.-]+\.apk$ ]]; then
-            echo "Unexpected APK asset name: $apk_name" >&2
+          host_name=""; host_url=""; controller_name=""; controller_url=""
+          for asset in "${apk_assets[@]}"; do
+            IFS=$'\t' read -r apk_name apk_url <<<"$asset"
+            case "$apk_name" in
+              x360-mobile-*.apk) host_name="$apk_name"; host_url="$apk_url" ;;
+              x360-companion-*.apk) controller_name="$apk_name"; controller_url="$apk_url" ;;
+              *) echo "Unexpected APK asset name: $apk_name" >&2; exit 1 ;;
+            esac
+          done
+          if [[ -z "$host_name" || -z "$controller_name" ]]; then
+            echo "Release must contain one emulator APK and one Companion APK." >&2
             exit 1
           fi
-          curl --fail --location --retry 3 --output "$apk_name" "$apk_url"
+          curl --fail --location --retry 3 --output "$host_name" "$host_url"
+          curl --fail --location --retry 3 --output "$controller_name" "$controller_url"
 
           aapt_path="$(
             find "$ANDROID_HOME/build-tools" -type f -name aapt -print |
@@ -77,7 +86,7 @@ jobs:
             echo "aapt was not found on the GitHub runner." >&2
             exit 1
           fi
-          package_line="$("$aapt_path" dump badging "$apk_name" | head -n 1)"
+          package_line="$("$aapt_path" dump badging "$host_name" | head -n 1)"
           # The package line also contains compileSdkVersionCodename='...'.
           # Anchor this match to the leading package field so a later name=
           # attribute can never be mistaken for the Android application ID.
@@ -92,8 +101,7 @@ jobs:
             echo "Invalid Android versionCode: $version_code" >&2
             exit 1
           fi
-          if [[ "$version_name" != "${{ steps.release.outputs.tag }}" &&
-                "v$version_name" != "${{ steps.release.outputs.tag }}" ]]; then
+          if [[ "v$version_name" != "${{ steps.release.outputs.tag }}" ]]; then
             echo "Tag and APK versionName do not match." >&2
             exit 1
           fi
@@ -111,25 +119,41 @@ jobs:
 
           jq -r '.body // ""' release.json > release-notes.md
           python tools/generate_update_manifest.py \
-            --apk "$apk_name" \
+            --apk "$host_name" \
             --version "$version_name" \
             --version-code "$version_code" \
-            --download-url "$apk_url" \
+            --download-url "$host_url" \
             --page-url "$(jq -r '.html_url' release.json)" \
             --notes-file release-notes.md \
             --output update-manifest.json
-          rm -f "$apk_name" release-notes.md release.json
+          controller_line="$("$aapt_path" dump badging "$controller_name" | head -n 1)"
+          controller_package="$(sed -n "s/^package: name='\\([^']*\\)'.*/\\1/p" <<<"$controller_line")"
+          controller_code="$(sed -n "s/.*versionCode='\\([^']*\\)'.*/\\1/p" <<<"$controller_line")"
+          controller_version="$(sed -n "s/.*versionName='\\([^']*\\)'.*/\\1/p" <<<"$controller_line")"
+          if [[ "$controller_package" != "emu.x360mobile.controller" || "$controller_version" != "0.1.0" || ! "$controller_code" =~ ^[1-9][0-9]*$ ]]; then
+            echo "Unexpected Companion package or version." >&2
+            exit 1
+          fi
+          python tools/generate_controller_update_manifest.py \
+            --apk "$controller_name" \
+            --version "$controller_version" \
+            --version-code "$controller_code" \
+            --release-tag "${{ steps.release.outputs.tag }}" \
+            --download-url "$controller_url" \
+            --page-url "$(jq -r '.html_url' release.json)" \
+            --output controller-update-manifest.json
+          rm -f "$host_name" "$controller_name" release-notes.md release.json
 
       - name: Publish manifest
         shell: bash
         run: |
           set -euo pipefail
-          if git diff --quiet -- update-manifest.json; then
+          if git diff --quiet -- update-manifest.json controller-update-manifest.json; then
             echo "Manifest is already current."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add update-manifest.json
+          git add update-manifest.json controller-update-manifest.json
           git commit -m "Publish ${{ steps.release.outputs.tag }} update metadata"
           git push origin HEAD:main

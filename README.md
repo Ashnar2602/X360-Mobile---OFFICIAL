@@ -38,6 +38,7 @@ and configuration. A title booting does not imply that it is fully playable.
 - ARM64 Android execution core and Vulkan graphics backend.
 - Controller-first library and in-game interface with touch support.
 - Physical controller support plus configurable touch controls and haptics.
+- Optional X360 Companion app for local wireless P2-P4 controllers.
 - Per-game settings, custom cVars and recommended configuration profiles.
 - GamerTags, profiles, saves, installed content, title updates and DLC tools.
 - Game discovery for ISO/XISO, XEX, extracted `default.xex` directories, ZAR
@@ -79,6 +80,15 @@ option. Hotfix, Revision and Repack suffixes identify maintenance packages.
 Release maintainers must follow [VERSIONING.md](VERSIONING.md). A GitHub release
 is not visible to the updater until the manifest workflow has completed
 successfully.
+
+## X360 Companion
+
+The same public release may also include `x360-companion-{version}.apk` for
+**X360 Companion** (`emu.x360mobile.controller`). It is a separate optional
+application for using nearby Android phones as local P2-P4 controllers through
+LAN or paired Bluetooth. It does not replace the emulator APK or share its app
+data. Pairing, trusted hosts and remote-controller permissions are configured
+from X360 Mobile under **Input > Remote controllers**.
 
 ## Supported game sources
 

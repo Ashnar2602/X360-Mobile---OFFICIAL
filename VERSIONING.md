@@ -21,8 +21,11 @@ Hotfix, Revision and Repack describe the reason for a package. They share one
 maintenance counter per base version and channel. If Hotfix 1 has shipped, the
 next maintenance package is 2 even when it is classified as a Revision.
 
-Tags are always `v{versionName}`. The single APK asset is always
-`x360-mobile-{versionName}.apk`.
+Emulator tags are always `v{versionName}`. A combined emulator/Companion
+release contains exactly two APK assets: `x360-mobile-{versionName}.apk` and
+`x360-companion-{companionVersion}.apk`. The Companion has its own package and
+independent update feed, but is intentionally published in the same GitHub
+Release as the matching emulator build.
 
 ## Android `versionCode`
 
@@ -55,10 +58,10 @@ requirement.
 
 ## Publication guarantees
 
-`.github/workflows/publish-update-manifest.yml` verifies the tag, APK filename,
-package ID, APK version, `versionCode`, channel and GitHub prerelease flag. It
-then calculates size and SHA-256 and generates schema 2 of
-`update-manifest.json`.
+`.github/workflows/publish-update-manifest.yml` verifies both APK filenames,
+package IDs, versions, host channel and GitHub prerelease flag. It then
+calculates size and SHA-256 and generates schema 2 of `update-manifest.json`
+for X360 Mobile plus `controller-update-manifest.json` for the Companion.
 
 A version is immutable: rerunning with the identical APK is a no-op, while an
 APK with different bytes under the same version is rejected. The feed retains
