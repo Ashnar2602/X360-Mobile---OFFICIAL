@@ -1,7 +1,32 @@
 {
   "schema": 2,
-  "highestVersionCode": 6029000,
+  "highestVersionCode": 6029001,
   "releases": [
+    {
+      "version": "0.6.2-public.hotfix.1",
+      "versionCode": 6029001,
+      "channel": "public",
+      "channelSequence": 0,
+      "maintenanceKind": "hotfix",
+      "maintenanceSequence": 1,
+      "publicationSequence": 1,
+      "prerelease": false,
+      "mandatory": false,
+      "security": false,
+      "blockedVersionCodes": [],
+      "supersedes": "",
+      "rolloutPercentage": 100,
+      "minSourceVersionCode": 0,
+      "maxSourceVersionCode": 0,
+      "pageUrl": "https://github.com/Ashnar2602/X360-Mobile---OFFICIAL/releases/tag/v0.6.2-public.hotfix.1",
+      "notes": "# X360 Mobile 0.6.2 Public Hotfix 1\n\nThis maintenance release hardens the Vulkan and Android runtime introduced in\n0.6.2. It keeps the same public feature line and concentrates on conservative\ndriver compatibility, reusable caches, memory stability and correct platform\nscheduling.\n\n## Vulkan compatibility and cache stability\n\n- Added `vulkan_extended_dynamic_state=auto|static|dynamic` globally and per\n  game. `auto` uses the faster Vulkan 1.3 path on capable Qualcomm and Mesa\n  drivers, while proprietary Mali and Samsung/Xclipse drivers retain the\n  established static path until their exact GPU and driver combination has\n  been physically validated.\n- Explicit `dynamic` mode still falls back safely when the complete required\n  Vulkan functionality is unavailable. PanVK and other Mesa drivers are not\n  confused with proprietary drivers from the same GPU vendor.\n- Host pipeline descriptions are now isolated between static and dynamic\n  modes. Vulkan binary caches are additionally separated by the driver's\n  pipeline-cache identity and version, preventing incompatible data from being\n  reused after a driver, mode or application update.\n- Pipeline-cache writes are atomic and periodically checkpointed at safe\n  points, so a crash is less likely to discard all compilation work from the\n  current session. Guest shader translations remain shared where safe.\n- When rebuilding is required, the launch flow now reports that cache\n  verification or optimization is in progress rather than repeatedly reusing\n  an incompatible cache.\n\n## Memory and Android runtime behavior\n\n- Vulkan upload pages now remain reusable for the entire game session instead\n  of being discarded after a fixed number of submissions. This avoids cyclic\n  allocation and rebuilding during sustained gameplay.\n- Upload memory is reduced only after a real Android memory-pressure signal,\n  and only pages no longer used by the GPU are eligible. Normal backgrounding\n  does not destroy the warm pool, while title shutdown still releases it.\n- Android display hints now use the general interactive-content contract,\n  apply once per Surface and are cleared when that Surface is released. Xbox\n  guest timing remains at its established 60 Hz cadence.\n- Android Performance Hint sessions now use `android_adpf=auto|off|on`.\n  Existing boolean values migrate automatically. `auto`, the default, starts\n  only with supported APIs, valid Android thread identities and a measurable\n  command-processor workload; any platform error returns to normal scheduling\n  for the remainder of the session without repeated retries.\n\n## Validation and conservative defaults\n\n- Automated JVM, native ARM64, lint, Debug and Release packaging gates passed.\n- The deterministic extended-state hardware probe passed on Ayn Odin3,\n  Adreno 830 and the proprietary Qualcomm system driver in automatic dynamic\n  mode, covering triangle, line and point topology plus culling and winding.\n- Proprietary Mali and Xclipse remain on the static compatibility path by\n  default. This release does not claim those devices fixed until their exact\n  GPU and driver revisions complete physical game testing.\n- No game-specific settings, imported Turnip package or user cache is deleted\n  solely because another driver or rendering mode is selected.\n\n## Package\n\n- Package: `emu.x360mobile.com`.\n- Version: `0.6.2-public.hotfix.1` (`versionCode 6029001`).\n- Public artifact: `x360-mobile-0.6.2-public.hotfix.1.apk`.\n- Channel: Public maintenance release; it is not a GitHub prerelease.\n- The APK uses the established X360 Mobile Release signing identity, stripped\n  ARM64 native libraries and APK Signature Scheme v3 with a local v4 sidecar.\n\nOnline compatibility-report submission remains temporarily disabled while\nthat service is redesigned. X360 Mobile is experimental software, is not\naffiliated with Microsoft or Xbox, does not support piracy and must be used\nonly with games and content the user legally owns.\n\n",
+      "publishedAt": "2026-08-17T07:17:21.041757+00:00",
+      "apk": {
+        "url": "https://github.com/Ashnar2602/X360-Mobile---OFFICIAL/releases/download/v0.6.2-public.hotfix.1/x360-mobile-0.6.2-public.hotfix.1.apk",
+        "size": 55355917,
+        "sha256": "2919a9a4587e9a2a30a0f9a6e8388d16c945c2d464cfedd9628f08eaea2b477d"
+      }
+    },
     {
       "version": "0.6.2",
       "versionCode": 6029000,
