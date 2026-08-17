@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "product": "x360-companion",
+  "packageName": "emu.x360mobile.controller",
+  "latest": {
+    "version": "0.1.0",
+    "versionCode": 11002,
+    "channel": "public",
+    "prerelease": false,
+    "releaseTag": "v0.6.3",
+    "pageUrl": "https://github.com/Ashnar2602/X360-Mobile---OFFICIAL/releases/tag/v0.6.3",
+    "publishedAt": "2026-08-17T19:30:20.927891+00:00",
+    "apk": {
+      "url": "https://github.com/Ashnar2602/X360-Mobile---OFFICIAL/releases/download/v0.6.3/x360-companion-0.1.0.apk",
+      "size": 9486485,
+      "sha256": "51854c4aac5a17301d1a389c2118aa31bb46a1e702940c73d61827ffc2c4638e"
+    }
+  }
+}
