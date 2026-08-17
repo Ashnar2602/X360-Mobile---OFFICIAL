@@ -130,7 +130,7 @@ jobs:
           controller_package="$(sed -n "s/^package: name='\\([^']*\\)'.*/\\1/p" <<<"$controller_line")"
           controller_code="$(sed -n "s/.*versionCode='\\([^']*\\)'.*/\\1/p" <<<"$controller_line")"
           controller_version="$(sed -n "s/.*versionName='\\([^']*\\)'.*/\\1/p" <<<"$controller_line")"
-          if [[ "$controller_package" != "emu.x360mobile.controller" || "$controller_version" != "0.1.0" || ! "$controller_code" =~ ^[1-9][0-9]*$ ]]; then
+          if [[ "$controller_package" != "emu.x360mobile.controller" || ! "$controller_version" =~ ^[0-9]+\.[0-9]+\.[0-9]+([.-][0-9A-Za-z.-]+)?$ || ! "$controller_code" =~ ^[1-9][0-9]*$ || "$controller_name" != "x360-companion-$controller_version.apk" ]]; then
             echo "Unexpected Companion package or version." >&2
             exit 1
           fi
