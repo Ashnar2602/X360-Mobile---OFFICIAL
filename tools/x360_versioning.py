@@ -168,9 +168,21 @@ def validate_version_code(version: ParsedVersion, version_code: int) -> int:
     )
     publication_sequence = version_code - base
     if publication_sequence not in range(0, 1000):
-        raise ValueError(
-            f"versionCode {version_code} does not match {version.canonical}"
-        )
+        # The newer core already distributes this monotonic git-count scheme.
+        # Keep legacy codes valid; never reinterpret their stage/sequence range.
+        git_base = (
+            version.major * 10_000 + version.minor * 100 + version.patch
+        ) * 100_000
+        git_count = version_code - git_base
+        if git_count not in range(1, 100_000):
+            raise ValueError(
+                f"versionCode {version_code} does not match {version.canonical}"
+            )
+        if version.prerelease and version.channel_sequence <= 0:
+            raise ValueError("Alpha, Preview, and RC releases require a positive sequence")
+        # Channel sequence names the release; publication sequence is the git
+        # count. Feed monotonicity and immutable APK checks remain authoritative.
+        return git_count
     if version.channel == "public" and version.maintenance_kind == "none":
         if publication_sequence != 0:
             raise ValueError("The initial Public release must use publication sequence 0")
