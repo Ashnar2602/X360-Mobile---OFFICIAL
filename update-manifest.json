@@ -1,15 +1,15 @@
 {
   "schema": 2,
-  "highestVersionCode": 60411108,
+  "highestVersionCode": 60411113,
   "releases": [
     {
-      "version": "0.6.4+f398ad183.11108",
-      "versionCode": 60411108,
+      "version": "0.6.4+f398ad183.11113",
+      "versionCode": 60411113,
       "channel": "public",
       "channelSequence": 0,
       "maintenanceKind": "none",
       "maintenanceSequence": 0,
-      "publicationSequence": 11108,
+      "publicationSequence": 11113,
       "prerelease": false,
       "mandatory": false,
       "security": false,
@@ -18,13 +18,13 @@
       "rolloutPercentage": 100,
       "minSourceVersionCode": 0,
       "maxSourceVersionCode": 0,
-      "pageUrl": "https://github.com/Ashnar2602/X360-Mobile---OFFICIAL/releases/tag/v0.6.4%2Bf398ad183.11108",
-      "notes": "# X360 Mobile 0.6.4 — Hotfix 1\n\nThis maintenance update fixes game-folder import and unnecessary temporary game copies, and adds a way to silence repeated external-display prompts.\n\n## Fixes\n\n- **Game folders on fresh installations:** fixed a folder-import path that could report “No XEX, ELF, ISO, ZAR or STFS/GOD titles found” even when the selected folder contained supported games. Android can expose different file lists depending on the storage permissions granted; folder import now uses the authorized access method instead of treating an incomplete local listing as an empty folder.\n- **Direct ISO/ZAR access:** supported images exposed by Android's file picker can now be read directly when the storage provider supports it. Previously, the absence of a normal filesystem path could trigger an unnecessary full temporary copy even though the image was readable. Providers that only offer streams or partial files may still require the explicit copy option.\n- **Repeated TV-mode prompts:** added a persistent option to disable automatic external-display prompts, plus “Don't ask again” in the prompt itself. This gives users a way to stop repeated notices when Android incorrectly reports an external screen. Manual TV-mode and display selection remain available in Settings → Interface → Displays and TV.\n\n## Updating\n\n- Public version **0.6.4**, build **60411108**. Existing installations can update in place and keep their data.\n- If a folder failed to import previously, select it again after updating. All-files access remains available through Android's permission screen.\n- TV mode and synchronized player profiles remain highly experimental.\n- Includes the features and improvements from the [original 0.6.4 release](https://github.com/Ashnar2602/X360-Mobile---OFFICIAL/releases/tag/v0.6.4%2Bf398ad183).\n\n",
-      "publishedAt": "2026-11-02T08:56:48.887606+00:00",
+      "pageUrl": "https://github.com/Ashnar2602/X360-Mobile---OFFICIAL/releases/tag/v0.6.4%2Bf398ad183.11113",
+      "notes": "# X360 Mobile 0.6.4 — Hotfix 2\n\nThis update brings general correctness, graphics, stability and efficiency improvements, developed and evaluated using **Split/Second** as a reference game. These are improvements to the emulator itself rather than fixes restricted to one title. Other games may also benefit, but broader compatibility and performance testing is still limited.\n\n## Improvements\n\n- Improved handling of demanding graphics workloads and reduced avoidable processing overhead.\n- Corrected visual consistency and resource-handling issues, including an issue affecting frame interpolation.\n- Improved the reliability of the touch-control layout editor.\n- Added optional independent auto-hide for the Menu button.\n- Reorganized Settings with fewer main categories and clearer access to game content, patches and advanced tools.\n\n## Split/Second: still experimental\n\nOn the tested **Snapdragon 8 Gen 2** setup, Split/Second currently fluctuates around **8–18 FPS**, depending on the scene and the selected experimental settings. The game **still requires extensive further work to become playable on this SoC**. Occasional pauses and remaining graphical issues are still under investigation.\n\nThe experimental per-game options used for these tests remain **opt-in**; this update does not enable them globally. Results on other devices, drivers and games have not been widely verified.\n\n## Updating\n\n- Public version **0.6.4 Hotfix 2**, build **60411113**. Existing installations can update in place and keep their games, settings and saves.\n- Includes the fixes from Hotfix 1. TV mode and synchronized player profiles remain highly experimental.\n- X360 Companion is unchanged.\n\n",
+      "publishedAt": "2026-11-03T22:34:10.937804+00:00",
       "apk": {
-        "url": "https://github.com/Ashnar2602/X360-Mobile---OFFICIAL/releases/download/v0.6.4%2Bf398ad183.11108/x360-mobile-0.6.4%2Bf398ad183.11108.apk",
-        "size": 47569022,
-        "sha256": "ad0f5a576d747bcf2e9ce7970aec3288d5a408bd1f6a5a4956c659994440a12f"
+        "url": "https://github.com/Ashnar2602/X360-Mobile---OFFICIAL/releases/download/v0.6.4%2Bf398ad183.11113/x360-mobile-0.6.4%2Bf398ad183.11113.apk",
+        "size": 47724780,
+        "sha256": "359de34b78611f30c7c62cd8d405d5ccf50f2f6376a55d273c960261feff3b85"
       }
     }
   ]
