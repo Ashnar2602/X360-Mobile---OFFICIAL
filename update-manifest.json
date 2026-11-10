@@ -1,15 +1,15 @@
 {
   "schema": 2,
-  "highestVersionCode": 60411113,
+  "highestVersionCode": 60511351,
   "releases": [
     {
-      "version": "0.6.4+f398ad183.11113",
-      "versionCode": 60411113,
+      "version": "0.6.5+6000fc41c.11351",
+      "versionCode": 60511351,
       "channel": "public",
       "channelSequence": 0,
       "maintenanceKind": "none",
       "maintenanceSequence": 0,
-      "publicationSequence": 11113,
+      "publicationSequence": 11351,
       "prerelease": false,
       "mandatory": false,
       "security": false,
@@ -18,13 +18,13 @@
       "rolloutPercentage": 100,
       "minSourceVersionCode": 0,
       "maxSourceVersionCode": 0,
-      "pageUrl": "https://github.com/Ashnar2602/X360-Mobile---OFFICIAL/releases/tag/v0.6.4%2Bf398ad183.11113",
-      "notes": "# X360 Mobile 0.6.4 — Hotfix 2\n\nThis update brings general correctness, graphics, stability and efficiency improvements, developed and evaluated using **Split/Second** as a reference game. These are improvements to the emulator itself rather than fixes restricted to one title. Other games may also benefit, but broader compatibility and performance testing is still limited.\n\n## Improvements\n\n- Improved handling of demanding graphics workloads and reduced avoidable processing overhead.\n- Corrected visual consistency and resource-handling issues, including an issue affecting frame interpolation.\n- Improved the reliability of the touch-control layout editor.\n- Added optional independent auto-hide for the Menu button.\n- Reorganized Settings with fewer main categories and clearer access to game content, patches and advanced tools.\n\n## Split/Second: still experimental\n\nOn the tested **Snapdragon 8 Gen 2** setup, Split/Second currently fluctuates around **8–18 FPS**, depending on the scene and the selected experimental settings. The game **still requires extensive further work to become playable on this SoC**. Occasional pauses and remaining graphical issues are still under investigation.\n\nThe experimental per-game options used for these tests remain **opt-in**; this update does not enable them globally. Results on other devices, drivers and games have not been widely verified.\n\n## Updating\n\n- Public version **0.6.4 Hotfix 2**, build **60411113**. Existing installations can update in place and keep their games, settings and saves.\n- Includes the fixes from Hotfix 1. TV mode and synchronized player profiles remain highly experimental.\n- X360 Companion is unchanged.\n\n",
-      "publishedAt": "2026-11-03T22:34:10.937804+00:00",
+      "pageUrl": "https://github.com/Ashnar2602/X360-Mobile---OFFICIAL/releases/tag/v0.6.5%2B6000fc41c.11351",
+      "notes": "# X360 Mobile 0.6.5\n\nThis update focuses on more reliable profile and save imports, together with improvements to graphics processing and performance.\n\n## Profiles and saved games\n\n- Improved import reliability, including backups created with earlier versions of X360 Mobile.\n- Clearer previews and confirmation before replacing existing profile or saved-game data.\n- Stronger checks and recovery when an import is cancelled or interrupted, helping protect existing data.\n- Preserves the original profile and saved-game ownership when restoring backups.\n\n## Graphics and performance\n\n- Improved graphics-work scheduling and reduced avoidable processing overhead.\n- Added and refined graphics optimizations, evaluated using **GTA IV on Odin 2**.\n- Further improvements to graphics-resource handling and pipeline reliability.\n\nTwo graphics optimizations are now **enabled by default**. Previously saved choices to disable them, including per-game overrides, continue to be respected. Both options can still be turned off.\n\nPerformance gains depend on the game, device, driver and settings. Other experimental graphics optimizations remain **opt-in**. Testing across other games and GPU families is still limited.\n\n## Updating\n\n- Existing installations can update in place and keep their games, settings, profiles and saves. There is no need to uninstall first.\n- Existing preferences and per-game overrides are preserved.\n- TV mode and synchronized player profiles remain highly experimental and may still have issues.\n- X360 Companion is unchanged.\n\n",
+      "publishedAt": "2026-11-10T18:31:51.687269+00:00",
       "apk": {
-        "url": "https://github.com/Ashnar2602/X360-Mobile---OFFICIAL/releases/download/v0.6.4%2Bf398ad183.11113/x360-mobile-0.6.4%2Bf398ad183.11113.apk",
-        "size": 47724780,
-        "sha256": "359de34b78611f30c7c62cd8d405d5ccf50f2f6376a55d273c960261feff3b85"
+        "url": "https://github.com/Ashnar2602/X360-Mobile---OFFICIAL/releases/download/v0.6.5%2B6000fc41c.11351/x360-mobile-0.6.5%2B6000fc41c.11351.apk",
+        "size": 50579692,
+        "sha256": "b856bfe649978ad06dd005363607c90aea8d8b6a39eda4a960deaa4ba83f317d"
       }
     }
   ]
