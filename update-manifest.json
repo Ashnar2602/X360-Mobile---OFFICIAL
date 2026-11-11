@@ -1,15 +1,15 @@
 {
   "schema": 2,
-  "highestVersionCode": 60511351,
+  "highestVersionCode": 60511356,
   "releases": [
     {
-      "version": "0.6.5+6000fc41c.11351",
-      "versionCode": 60511351,
+      "version": "0.6.5+72b2e24ba.11356",
+      "versionCode": 60511356,
       "channel": "public",
       "channelSequence": 0,
       "maintenanceKind": "none",
       "maintenanceSequence": 0,
-      "publicationSequence": 11351,
+      "publicationSequence": 11356,
       "prerelease": false,
       "mandatory": false,
       "security": false,
@@ -18,13 +18,13 @@
       "rolloutPercentage": 100,
       "minSourceVersionCode": 0,
       "maxSourceVersionCode": 0,
-      "pageUrl": "https://github.com/Ashnar2602/X360-Mobile---OFFICIAL/releases/tag/v0.6.5%2B6000fc41c.11351",
-      "notes": "# X360 Mobile 0.6.5\n\nThis update focuses on more reliable profile and save imports, together with improvements to graphics processing and performance.\n\n## Profiles and saved games\n\n- Improved import reliability, including backups created with earlier versions of X360 Mobile.\n- Clearer previews and confirmation before replacing existing profile or saved-game data.\n- Stronger checks and recovery when an import is cancelled or interrupted, helping protect existing data.\n- Preserves the original profile and saved-game ownership when restoring backups.\n\n## Graphics and performance\n\n- Improved graphics-work scheduling and reduced avoidable processing overhead.\n- Added and refined graphics optimizations, evaluated using **GTA IV on Odin 2**.\n- Further improvements to graphics-resource handling and pipeline reliability.\n\nTwo graphics optimizations are now **enabled by default**. Previously saved choices to disable them, including per-game overrides, continue to be respected. Both options can still be turned off.\n\nPerformance gains depend on the game, device, driver and settings. Other experimental graphics optimizations remain **opt-in**. Testing across other games and GPU families is still limited.\n\n## Updating\n\n- Existing installations can update in place and keep their games, settings, profiles and saves. There is no need to uninstall first.\n- Existing preferences and per-game overrides are preserved.\n- TV mode and synchronized player profiles remain highly experimental and may still have issues.\n- X360 Companion is unchanged.\n\n",
-      "publishedAt": "2026-11-10T18:31:51.687269+00:00",
+      "pageUrl": "https://github.com/Ashnar2602/X360-Mobile---OFFICIAL/releases/tag/v0.6.5%2B72b2e24ba.11356",
+      "notes": "# X360 Mobile 0.6.5 Hotfix 1\n\nThis hotfix improves driver management and restores Android shortcuts, with a new way to refresh global settings without reinstalling the app.\n\n## Vulkan drivers\n\n- Fixed downloads from driver catalogs that had stopped working.\n- Improved package checks and clearer messages for unsupported or incompatible driver packages.\n- Driver compatibility still depends on the device and package; this update does not make every custom driver compatible with every device.\n\n## Android shortcuts\n\n- Fixed game shortcuts not being created from the game menu.\n- Fixed copying game launch links from the same menu.\n- Android still asks for confirmation before adding a shortcut to the Home screen.\n\n## Reset global settings\n\n- Added a circular-arrow button beside the Settings search bar to restore global cvars to the current code defaults.\n- A confirmation explains what will be reset. Afterward, you can immediately rerun initial setup to choose the app and console languages and review console options.\n- Per-game overrides, storage locations, library, profiles, saves, drivers and patch selections are preserved.\n- No settings are reset automatically when updating. The reset is optional and takes effect the next time a game starts.\n\n## Updating\n\n- Update in place; there is no need to uninstall or delete data.\n- Verified on Odin 2. Wider device and driver coverage remains limited.\n- TV mode and synchronized player profiles remain highly experimental and may still have issues.\n- X360 Companion is unchanged.\n\n",
+      "publishedAt": "2026-11-11T04:02:11.510499+00:00",
       "apk": {
-        "url": "https://github.com/Ashnar2602/X360-Mobile---OFFICIAL/releases/download/v0.6.5%2B6000fc41c.11351/x360-mobile-0.6.5%2B6000fc41c.11351.apk",
-        "size": 50579692,
-        "sha256": "b856bfe649978ad06dd005363607c90aea8d8b6a39eda4a960deaa4ba83f317d"
+        "url": "https://github.com/Ashnar2602/X360-Mobile---OFFICIAL/releases/download/v0.6.5%2B72b2e24ba.11356/x360-mobile-0.6.5%2B72b2e24ba.11356.apk",
+        "size": 50612460,
+        "sha256": "20c888712a4e7ad8065b226bdf76f547decc952fce7cd9f394b7db71c5f60237"
       }
     }
   ]
