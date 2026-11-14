@@ -1,15 +1,15 @@
 {
   "schema": 2,
-  "highestVersionCode": 60511356,
+  "highestVersionCode": 60511365,
   "releases": [
     {
-      "version": "0.6.5+72b2e24ba.11356",
-      "versionCode": 60511356,
+      "version": "0.6.5+7ef3c6c0b.11365",
+      "versionCode": 60511365,
       "channel": "public",
       "channelSequence": 0,
       "maintenanceKind": "none",
       "maintenanceSequence": 0,
-      "publicationSequence": 11356,
+      "publicationSequence": 11365,
       "prerelease": false,
       "mandatory": false,
       "security": false,
@@ -18,13 +18,13 @@
       "rolloutPercentage": 100,
       "minSourceVersionCode": 0,
       "maxSourceVersionCode": 0,
-      "pageUrl": "https://github.com/Ashnar2602/X360-Mobile---OFFICIAL/releases/tag/v0.6.5%2B72b2e24ba.11356",
-      "notes": "# X360 Mobile 0.6.5 Hotfix 1\n\nThis hotfix improves driver management and restores Android shortcuts, with a new way to refresh global settings without reinstalling the app.\n\n## Vulkan drivers\n\n- Fixed downloads from driver catalogs that had stopped working.\n- Improved package checks and clearer messages for unsupported or incompatible driver packages.\n- Driver compatibility still depends on the device and package; this update does not make every custom driver compatible with every device.\n\n## Android shortcuts\n\n- Fixed game shortcuts not being created from the game menu.\n- Fixed copying game launch links from the same menu.\n- Android still asks for confirmation before adding a shortcut to the Home screen.\n\n## Reset global settings\n\n- Added a circular-arrow button beside the Settings search bar to restore global cvars to the current code defaults.\n- A confirmation explains what will be reset. Afterward, you can immediately rerun initial setup to choose the app and console languages and review console options.\n- Per-game overrides, storage locations, library, profiles, saves, drivers and patch selections are preserved.\n- No settings are reset automatically when updating. The reset is optional and takes effect the next time a game starts.\n\n## Updating\n\n- Update in place; there is no need to uninstall or delete data.\n- Verified on Odin 2. Wider device and driver coverage remains limited.\n- TV mode and synchronized player profiles remain highly experimental and may still have issues.\n- X360 Companion is unchanged.\n\n",
-      "publishedAt": "2026-11-11T04:02:11.510499+00:00",
+      "pageUrl": "https://github.com/Ashnar2602/X360-Mobile---OFFICIAL/releases/tag/v0.6.5%2B7ef3c6c0b.11365",
+      "notes": "# X360 Mobile 0.6.5 Hotfix 2\n\nThis update focuses on settings reliability, updated recommended game settings and optional Samsung Xclipse driver support.\n\n## Reliability\n\n- More robust saving of settings after unexpected interruptions.\n- Clearer messages and better access to settings and support tools when the global configuration cannot be read.\n- Improved emulation scheduling reliability in certain situations. This is a general correctness improvement, not a promise of higher FPS in every game.\n\n## Vulkan drivers\n\n- Added the JimVulkan RADV Xclipse catalog, with global and per-game selection and dedicated optional texture settings.\n- Requires Android 14 or newer and a supported Samsung Xclipse GPU. Incompatible packages and hardware are rejected without changing the previous driver selection.\n- RADV support is experimental. Loading and gameplay on Xclipse hardware remain unverified; this is not a confirmed fix for FIFA rendering problems. Image quality and compatibility depend on the driver and its settings.\n\n## Recommended settings and troubleshooting\n\n- Updated bundled recommended game settings, including a profile for Divinity II: The Dragon Knight Saga. Improved rendering was verified in character creation; later gameplay remains unverified.\n- Added an optional game startup input recorder to help reproduce launch and menu problems. It is disabled by default.\n\n## Updating\n\n- Update in place: no uninstall or data reset is required. Profiles, saved games and existing per-game settings are preserved.\n- An already damaged configuration may still require assisted recovery; updating does not automatically rebuild it.\n- Local checks used Odin 3 with system and Turnip drivers. Wider hardware and gameplay coverage remains limited.\n- TV mode and synchronized player profiles remain highly experimental and may still have issues.\n- X360 Companion is unchanged.\n\n",
+      "publishedAt": "2026-11-14T23:35:47.728411+00:00",
       "apk": {
-        "url": "https://github.com/Ashnar2602/X360-Mobile---OFFICIAL/releases/download/v0.6.5%2B72b2e24ba.11356/x360-mobile-0.6.5%2B72b2e24ba.11356.apk",
-        "size": 50612460,
-        "sha256": "20c888712a4e7ad8065b226bdf76f547decc952fce7cd9f394b7db71c5f60237"
+        "url": "https://github.com/Ashnar2602/X360-Mobile---OFFICIAL/releases/download/v0.6.5%2B7ef3c6c0b.11365/x360-mobile-0.6.5%2B7ef3c6c0b.11365.apk",
+        "size": 50669804,
+        "sha256": "a10d40498d39b17330de0d05d704111ff04b7a36cf14127868cda274039b5fb1"
       }
     }
   ]
