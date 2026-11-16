@@ -1,15 +1,15 @@
 {
   "schema": 2,
-  "highestVersionCode": 60511370,
+  "highestVersionCode": 60511377,
   "releases": [
     {
-      "version": "0.6.5+b6b0627bf.11370",
-      "versionCode": 60511370,
+      "version": "0.6.5+835ecd2ec.11377",
+      "versionCode": 60511377,
       "channel": "public",
       "channelSequence": 0,
       "maintenanceKind": "none",
       "maintenanceSequence": 0,
-      "publicationSequence": 11370,
+      "publicationSequence": 11377,
       "prerelease": false,
       "mandatory": false,
       "security": false,
@@ -18,13 +18,13 @@
       "rolloutPercentage": 100,
       "minSourceVersionCode": 0,
       "maxSourceVersionCode": 0,
-      "pageUrl": "https://github.com/Ashnar2602/X360-Mobile---OFFICIAL/releases/tag/v0.6.5%2Bb6b0627bf.11370",
-      "notes": "# X360 Mobile 0.6.5 Hotfix 4\n\nMaintenance update focused on clearer Vulkan driver error reporting.\n\n- Improved visibility and consistency of diagnostic messages when a driver cannot start or stops responding.\n- Clearer on-device troubleshooting feedback for experimental driver configurations.\n\nCustom driver compatibility remains device-dependent. This hotfix does not guarantee successful driver loading or resolve game rendering issues.\n\nInstall over your current version; no uninstall is required.\n\n",
-      "publishedAt": "2026-11-16T11:36:50.395408+00:00",
+      "pageUrl": "https://github.com/Ashnar2602/X360-Mobile---OFFICIAL/releases/tag/v0.6.5%2B835ecd2ec.11377",
+      "notes": "# X360 Mobile 0.6.5 Hotfix 5\n\nMaintenance update focused on game loading reliability and clearer driver diagnostics.\n\n- Improved handling of extracted games, disc images and installed game containers.\n- Added a per-game startup executable selector for games with multiple launchers.\n- Improved reliability when loading additional game modules and title updates, with safer recovery after failed launches.\n- Improved recognition of game files and preservation of launch preferences across library updates and shortcuts.\n- More precise on-device Vulkan driver diagnostics, including the image check that failed and available error information.\n\nCustom drivers remain device-dependent. More detailed diagnostics help investigate compatibility; they do not guarantee successful RADV loading or fix every game or mod.\n\nInstall over your current version; no uninstall is required. Keep a backup of your profiles and saves as usual.\n\n",
+      "publishedAt": "2026-11-16T22:15:27.620603+00:00",
       "apk": {
-        "url": "https://github.com/Ashnar2602/X360-Mobile---OFFICIAL/releases/download/v0.6.5%2Bb6b0627bf.11370/x360-mobile-0.6.5%2Bb6b0627bf.11370.apk",
-        "size": 50677996,
-        "sha256": "670b9d13aeb7a6e7c2b84db45bc782c7b622a14eaa9503373f7bb9b702ef3de8"
+        "url": "https://github.com/Ashnar2602/X360-Mobile---OFFICIAL/releases/download/v0.6.5%2B835ecd2ec.11377/x360-mobile-0.6.5%2B835ecd2ec.11377.apk",
+        "size": 50727148,
+        "sha256": "dc14de6d8442ebc136f2c8a1fb04e94472567fdc3907c809e15760c96f03358c"
       }
     }
   ]
