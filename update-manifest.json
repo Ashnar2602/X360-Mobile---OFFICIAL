@@ -1,15 +1,15 @@
 {
   "schema": 2,
-  "highestVersionCode": 60511381,
+  "highestVersionCode": 60511387,
   "releases": [
     {
-      "version": "0.6.5+2f2c6bcc9.11381",
-      "versionCode": 60511381,
+      "version": "0.6.5+922d140b0.11387",
+      "versionCode": 60511387,
       "channel": "public",
       "channelSequence": 0,
       "maintenanceKind": "none",
       "maintenanceSequence": 0,
-      "publicationSequence": 11381,
+      "publicationSequence": 11387,
       "prerelease": false,
       "mandatory": false,
       "security": false,
@@ -18,13 +18,13 @@
       "rolloutPercentage": 100,
       "minSourceVersionCode": 0,
       "maxSourceVersionCode": 0,
-      "pageUrl": "https://github.com/Ashnar2602/X360-Mobile---OFFICIAL/releases/tag/v0.6.5%2B2f2c6bcc9.11381",
-      "notes": "# X360 Mobile 0.6.5 Hotfix 6\n\nMaintenance update focused on optional driver compatibility and updated game recommendations.\n\n- Added an optional experimental texture compatibility setting for RADV on Samsung Xclipse. It is disabled by default and has not yet been verified on Xclipse hardware. Successful driver loading, rendering and performance are not guaranteed; memory use may increase.\n- Added recommended settings for **Mobile Suit Gundam: Operation Troy**, restoring the visible world in the first map tested on Odin 2. A complete game copy is required; other devices and the full campaign remain unverified.\n- Added recommendations for **Sonic Free Riders with the adapted No Kinect mod**. The compatible adapted mod and its designated launcher are required: settings alone do not repair the original mod, and the mod is not bundled with the app. Menus and two tutorial stages were tested; uneven steering remains under investigation, and full-game compatibility is not confirmed.\n- Added recommended settings for **Borderlands** and **Borderlands 2** following user reports of reduced flickering. These workarounds may affect visibility or visual effects and are intended for those games only.\n\nRecommended settings require your confirmation and do not change global defaults. Results depend on the game, device and driver; this update does not claim a general FPS increase.\n\nInstall over your current version; no uninstall is required. Keep a backup of your profiles and saves as usual.\n\n",
-      "publishedAt": "2026-11-17T17:28:17.460957+00:00",
+      "pageUrl": "https://github.com/Ashnar2602/X360-Mobile---OFFICIAL/releases/tag/v0.6.5%2B922d140b0.11387",
+      "notes": "# X360 Mobile 0.6.5 Hotfix 7\n\nThis update brings a general graphics correctness improvement and experimental picture-in-picture support for external media apps.\n\n## Graphics correction\n\n- Fixed the horizontally divided image and missing lower portion observed in the opening real-time cutscene of **Kingdoms of Amalur: Reckoning**.\n- This is a general core correction, applied automatically without additional settings. It may benefit other games affected by similar rendering problems, but wider game and GPU coverage still needs testing.\n- Verified through repeated starts and progression to character creation on Odin 2. This does not certify the full campaign or promise a general FPS increase.\n\n## Experimental picture-in-picture\n\n- Keep the game full screen while a compatible external media app uses Android's floating video window.\n- Added an app selector with PiP compatibility indicators, an optional media link, and controls in the game menu. Find these options under **Settings → App → Appearance and startup**.\n- Direct opening requires Android 13 or later and a compatible app entry point. For apps that manage their own video PiP, use **Open video app**, start playback, activate that app's PiP, then return to the game. The game stays paused while another app is full screen.\n- Picture-in-picture and automatic opening are both **disabled by default**.\n- Enabling this mode mutes game audio. **Use game audio** restores it for the current session without changing your saved volume.\n\n### PiP limitations and testing\n\nCompatibility indicators describe app declarations and launch requirements; they do not certify video playback. Permissions, app restrictions and subscriptions still apply.\n\nAndroid and the media app control window position, available sizes and playback controls. Closing from the game menu is best effort; some apps may require Android's close button. The emulator cannot force every installed app into a floating window.\n\nInitial interface and lifecycle checks were completed on Odin 2. Real media playback, YouTube, incoming calls, TV mode and other devices still need testing and feedback. Running another app alongside the game also shares the device's resources; no performance benefit is claimed.\n\nTV mode and synced player profiles also remain experimental.\n\nInstall over your current version; no uninstall is required. Keep a backup of your profiles and saves as usual.\n\n",
+      "publishedAt": "2026-11-17T21:55:17.673379+00:00",
       "apk": {
-        "url": "https://github.com/Ashnar2602/X360-Mobile---OFFICIAL/releases/download/v0.6.5%2B2f2c6bcc9.11381/x360-mobile-0.6.5%2B2f2c6bcc9.11381.apk",
-        "size": 50739436,
-        "sha256": "935e5a0e9f5fd3965645e6ed29e3f4b2ccd40e1f9f529ae10defe2c1cea56d3f"
+        "url": "https://github.com/Ashnar2602/X360-Mobile---OFFICIAL/releases/download/v0.6.5%2B922d140b0.11387/x360-mobile-0.6.5%2B922d140b0.11387.apk",
+        "size": 50837740,
+        "sha256": "100d9fdf398ac0f363352472dc56437cf229e21684f8fbf93476091edd3d99dd"
       }
     }
   ]
