@@ -1,15 +1,15 @@
 {
   "schema": 2,
-  "highestVersionCode": 60511377,
+  "highestVersionCode": 60511381,
   "releases": [
     {
-      "version": "0.6.5+835ecd2ec.11377",
-      "versionCode": 60511377,
+      "version": "0.6.5+2f2c6bcc9.11381",
+      "versionCode": 60511381,
       "channel": "public",
       "channelSequence": 0,
       "maintenanceKind": "none",
       "maintenanceSequence": 0,
-      "publicationSequence": 11377,
+      "publicationSequence": 11381,
       "prerelease": false,
       "mandatory": false,
       "security": false,
@@ -18,13 +18,13 @@
       "rolloutPercentage": 100,
       "minSourceVersionCode": 0,
       "maxSourceVersionCode": 0,
-      "pageUrl": "https://github.com/Ashnar2602/X360-Mobile---OFFICIAL/releases/tag/v0.6.5%2B835ecd2ec.11377",
-      "notes": "# X360 Mobile 0.6.5 Hotfix 5\n\nMaintenance update focused on game loading reliability and clearer driver diagnostics.\n\n- Improved handling of extracted games, disc images and installed game containers.\n- Added a per-game startup executable selector for games with multiple launchers.\n- Improved reliability when loading additional game modules and title updates, with safer recovery after failed launches.\n- Improved recognition of game files and preservation of launch preferences across library updates and shortcuts.\n- More precise on-device Vulkan driver diagnostics, including the image check that failed and available error information.\n\nCustom drivers remain device-dependent. More detailed diagnostics help investigate compatibility; they do not guarantee successful RADV loading or fix every game or mod.\n\nInstall over your current version; no uninstall is required. Keep a backup of your profiles and saves as usual.\n\n",
-      "publishedAt": "2026-11-16T22:15:27.620603+00:00",
+      "pageUrl": "https://github.com/Ashnar2602/X360-Mobile---OFFICIAL/releases/tag/v0.6.5%2B2f2c6bcc9.11381",
+      "notes": "# X360 Mobile 0.6.5 Hotfix 6\n\nMaintenance update focused on optional driver compatibility and updated game recommendations.\n\n- Added an optional experimental texture compatibility setting for RADV on Samsung Xclipse. It is disabled by default and has not yet been verified on Xclipse hardware. Successful driver loading, rendering and performance are not guaranteed; memory use may increase.\n- Added recommended settings for **Mobile Suit Gundam: Operation Troy**, restoring the visible world in the first map tested on Odin 2. A complete game copy is required; other devices and the full campaign remain unverified.\n- Added recommendations for **Sonic Free Riders with the adapted No Kinect mod**. The compatible adapted mod and its designated launcher are required: settings alone do not repair the original mod, and the mod is not bundled with the app. Menus and two tutorial stages were tested; uneven steering remains under investigation, and full-game compatibility is not confirmed.\n- Added recommended settings for **Borderlands** and **Borderlands 2** following user reports of reduced flickering. These workarounds may affect visibility or visual effects and are intended for those games only.\n\nRecommended settings require your confirmation and do not change global defaults. Results depend on the game, device and driver; this update does not claim a general FPS increase.\n\nInstall over your current version; no uninstall is required. Keep a backup of your profiles and saves as usual.\n\n",
+      "publishedAt": "2026-11-17T17:28:17.460957+00:00",
       "apk": {
-        "url": "https://github.com/Ashnar2602/X360-Mobile---OFFICIAL/releases/download/v0.6.5%2B835ecd2ec.11377/x360-mobile-0.6.5%2B835ecd2ec.11377.apk",
-        "size": 50727148,
-        "sha256": "dc14de6d8442ebc136f2c8a1fb04e94472567fdc3907c809e15760c96f03358c"
+        "url": "https://github.com/Ashnar2602/X360-Mobile---OFFICIAL/releases/download/v0.6.5%2B2f2c6bcc9.11381/x360-mobile-0.6.5%2B2f2c6bcc9.11381.apk",
+        "size": 50739436,
+        "sha256": "935e5a0e9f5fd3965645e6ed29e3f4b2ccd40e1f9f529ae10defe2c1cea56d3f"
       }
     }
   ]
