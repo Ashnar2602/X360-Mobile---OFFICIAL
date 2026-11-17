@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "revision": 4,
-  "catalogUrl": "https://raw.githubusercontent.com/Ashnar2602/X360-Mobile---OFFICIAL/main/recommended-settings/catalogs/catalog-r000004.json",
-  "catalogSha256": "37be47dfd6191594e445d489ee5b1200d9e5191ea27c6aca6735af9e03d34f48",
-  "catalogSize": 4845,
+  "revision": 5,
+  "catalogUrl": "https://raw.githubusercontent.com/Ashnar2602/X360-Mobile---OFFICIAL/main/recommended-settings/catalogs/catalog-r000005.json",
+  "catalogSha256": "3799ad7c116a54af487d6ed406cdc3ab7d40aae9a71087c906ee28a66ee6ed24",
+  "catalogSize": 6896,
   "keyId": "x360-settings-p256-2026-01",
-  "signature": "MEUCICTghX95AFK/j4kbHeMF2SAY5hrB3Otbz4gTbpFYFdcwAiEAt2I24uvMIk6+XwJISZ9ODNHLNArWJTJ+cfR5cNytsdk="
+  "signature": "MEUCIQDmWqMYcLAS3XQvtr2cKGfJqDuDtdaJHIako0YzFPujNwIgXDgbT9FBzz0FOaa+vKlrkJLN2+sKaVLTVUJbhH06NB0="
 }
