@@ -1,15 +1,15 @@
 {
   "schema": 2,
-  "highestVersionCode": 60511394,
+  "highestVersionCode": 60611658,
   "releases": [
     {
-      "version": "0.6.5+9af37e1bf.11394",
-      "versionCode": 60511394,
+      "version": "0.6.6+1c45825e5.11658",
+      "versionCode": 60611658,
       "channel": "public",
       "channelSequence": 0,
       "maintenanceKind": "none",
       "maintenanceSequence": 0,
-      "publicationSequence": 11394,
+      "publicationSequence": 11658,
       "prerelease": false,
       "mandatory": false,
       "security": false,
@@ -18,13 +18,13 @@
       "rolloutPercentage": 100,
       "minSourceVersionCode": 0,
       "maxSourceVersionCode": 0,
-      "pageUrl": "https://github.com/Ashnar2602/X360-Mobile---OFFICIAL/releases/tag/v0.6.5%2B9af37e1bf.11394",
-      "notes": "# X360 Mobile 0.6.5 Hotfix 8\n\nThis update improves graphics accuracy and adds better diagnostic information for investigating driver performance reports.\n\n## General graphics correction\n\n- Corrected a graphics accuracy issue observed as temporary black, blue or multicoloured corruption during the opening of **Fable II**.\n- The correction applies automatically and may also help other games affected by similar rendering problems. No additional game setting is required for this correction; existing recommended settings remain available.\n- Verified through two opening runs reaching the first childhood gameplay scene on Odin 2. Later scenes, full campaigns and other GPUs still need testing.\n- This is an accuracy improvement, with no general FPS increase promised. Brief pauses may still occur when new shaders are prepared.\n\n## Driver diagnostics and session sharing\n\n- Added more useful texture and performance information for investigating reported slowdowns with **RADV on Exynos/Xclipse**.\n- Gameplay measurement recordings are now associated with their session and can be included when using **Share session bundle** from Session history.\n- Diagnostic recording remains **disabled by default**. Collection and exported files have size limits; oversized recordings may be omitted from the shared bundle. A shorter recording can help when reporting a problem.\n- Recording, export data handling and normal game shutdown received focused checks on Odin 2 and host tests. RADV performance on Xclipse still needs tester feedback; this update does **not** claim to fix the reported **FIFA 17** slowdown.\n\n## Testing notes\n\nDetailed diagnostics can affect performance. Keep them off during normal play and collect short recordings only when needed for a report. Existing texture decoding quality is preserved.\n\nTV mode, synced player profiles and picture-in-picture remain **experimental** and may have issues depending on the device or app used.\n\nInstall over your current version; no uninstall is required. Keep a backup of your profiles and saves as usual.\n\n",
-      "publishedAt": "2026-11-19T06:21:03.161669+00:00",
+      "pageUrl": "https://github.com/Ashnar2602/X360-Mobile---OFFICIAL/releases/tag/v0.6.6%2B1c45825e5.11658",
+      "notes": "# X360 Mobile 0.6.6\n\n- Integrated Xenia Edge upstream through November 20, 2026. This brings updates across CPU and system emulation, graphics, audio and game content handling while preserving X360 Mobile's Android features and existing fixes.\n- Improved handling of game updates and Android storage access. Updated the in-game interface and input handling.\n- Continued work on reducing shader-related pauses at the beginning of **Fable II**. New scenes can still pause while shaders are prepared.\n\nFocused checks on Odin 2 covered gameplay in **GTA IV**, **Forza Horizon 2** and **Fable II**, as well as pause, resume and shutdown in **Assassin's Creed**. Results can vary across titles, devices and drivers.\n\nTV mode, synced player profiles and picture-in-picture remain experimental. You can install this release over your current version.\n\n",
+      "publishedAt": "2026-11-20T11:29:21.930597+00:00",
       "apk": {
-        "url": "https://github.com/Ashnar2602/X360-Mobile---OFFICIAL/releases/download/v0.6.5%2B9af37e1bf.11394/x360-mobile-0.6.5%2B9af37e1bf.11394.apk",
-        "size": 50862316,
-        "sha256": "4f91f3822d8febfe79eca6a9471551a5752baede1234c530ef669e1c821d013d"
+        "url": "https://github.com/Ashnar2602/X360-Mobile---OFFICIAL/releases/download/v0.6.6%2B1c45825e5.11658/x360-mobile-0.6.6%2B1c45825e5.11658.apk",
+        "size": 51063020,
+        "sha256": "212a704f515b0ccac147b8c5601eca9608782be996251c254696b3af1f9dcdb2"
       }
     }
   ]
